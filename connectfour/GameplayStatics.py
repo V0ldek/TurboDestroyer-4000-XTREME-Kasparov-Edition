@@ -2,6 +2,9 @@
 # This file contains the gameplay crucial constants to be used throughout the program
 #####
 
+# Debug messages and gamelog switch
+DEBUG = False
+
 # Dimensions of the game board
 NUMBER_OF_ROWS = 6
 NUMBER_OF_COLUMNS = 7
@@ -28,4 +31,4 @@ MOVE_UNDO = 'undo'
 INF = 1000000000
 
 # Time for one move (in milliseconds)
-TIME_TO_MOVE = 10000
+TIME_TO_MOVE = 1000

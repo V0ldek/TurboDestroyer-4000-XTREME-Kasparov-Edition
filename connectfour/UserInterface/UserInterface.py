@@ -146,7 +146,13 @@ def get_input():
     """ Reads the Player's keyboard input and returns a move
     """
 
-    key = _window.getKey()
+    if is_exiting():
+        return MOVE_ILLEGAL
+
+    try: 
+        key = _window.getKey()
+    except GraphicsError:
+        return MOVE_ILLEGAL
 
     # Check the key binds and move legality
     if key == KEY_BIND_RESET:
@@ -168,6 +174,9 @@ def handle_move(move, row):
     """ Update all the graphics for the given move
     """
     global _undo_available
+
+    if is_exiting():
+        return
 
     # Create a Circle object for the newly placed piece
     circle = Circle(Point((move + 2) * 2 * CIRCLE_RADIUS,
@@ -193,6 +202,9 @@ def undo_move():
     """
     global _undo_available
 
+    if is_exiting():
+        return
+
     if not _undo_available:
         return
 
@@ -215,13 +227,19 @@ def get_current_player():
 def is_exiting():
     """ Returns True if we've already closed the game window, False otherwise
     """
+
     return _window.isClosed()
 
 
 def handle_game_over(outcome):
     """ Inform the user about a game over
     """
-    print outcome
+
+    if is_exiting():
+        return
+
+    if DEBUG:
+        print outcome
 
     # Hide the move indicator
     _move_indicator.undraw()
@@ -246,6 +264,9 @@ def handle_game_over(outcome):
 def handle_illegal_move():
     """ Creates a red flash on the screen to indicate an invalid move
     """
+    if is_exiting():
+        return
+
     for i in range(0, 15):
         _window.setBackground(color_rgb(255, 18 * i, 18 * i))
 

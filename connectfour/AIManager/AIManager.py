@@ -262,7 +262,8 @@ def make_alpha_beta_move(board, evaluate, player, depth=NUMBER_OF_COLUMNS * NUMB
 
         best = None
 
-        print "for depth " + str(d + 1) + " value = " + str(root.prev_value)
+        if DEBUG:
+            print "for depth " + str(d + 1) + " value = " + str(root.prev_value)
 
         # If we are the maximising player, find the move with the highest min-max value
         # Among moves with equal values choose the one that has more moves until the end of the game
@@ -289,7 +290,8 @@ def make_alpha_beta_move(board, evaluate, player, depth=NUMBER_OF_COLUMNS * NUMB
                     if value == -INF:
                         return best.move
 
-    print "move found in " + str((time.clock() - t) * 1000)
+    if DEBUG:
+        print "move found in " + str((time.clock() - t) * 1000)
 
     return best.move
 
@@ -350,7 +352,9 @@ def make_evaluated_move(board, evaluate, player):
                 maxx = evaluation
                 best_move = x
 
-    print "the best move is " + str(best_move) + " of value " + str(maxx)
+    if DEBUG:
+        print "the best move is " + str(best_move) + " of value " + str(maxx)
+    
     return best_move
 
 

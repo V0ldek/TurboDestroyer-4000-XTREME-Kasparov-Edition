@@ -9,8 +9,9 @@ from connectfour import AIManager
 from connectfour import LevelManager
 from connectfour import UserInterface
 from connectfour.GameplayStatics import *
-
-f = open("gamelog" + str(datetime.datetime.now().time().hour) + " " + str(datetime.datetime.now().time().minute) +
+        
+if DEBUG:
+    f = open("gamelog" + str(datetime.datetime.now().time().hour) + " " + str(datetime.datetime.now().time().minute) +
          " " + str(datetime.datetime.now().time().second) + '.txt', 'w')
 
 ai_wins = 0
@@ -45,7 +46,8 @@ def handle_move(move):
     UserInterface.handle_move(move, row)
 
     # Print the board to stdout
-    LevelManager.get_board().print_board(f)
+    if DEBUG:
+        LevelManager.get_board().print_board(f)
 
     # Tell the LevelManager to check for victory conditions
     outcome = LevelManager.check_game_over()
@@ -59,7 +61,8 @@ def handle_move(move):
         elif outcome == OUTCOME_DRAW:
             draws += 1
 
-        f.write("PLAYER: " + str(player_wins) + " AI: " + str(ai_wins) + " DRAWS: " + str(draws) + "\n")
+        if DEBUG:
+            f.write("PLAYER: " + str(player_wins) + " AI: " + str(ai_wins) + " DRAWS: " + str(draws) + "\n")
 
         UserInterface.handle_game_over(outcome)
         LevelManager.reset()
@@ -83,9 +86,10 @@ def main_loop():
     # Whether the first player is AI
     ai_versus = False
 
-    while True:
+    while not UserInterface.is_exiting():
 
-        print "board's hash = " + str(LevelManager.get_board().hash)
+        if DEBUG:
+            print "board's hash = " + str(LevelManager.get_board().hash)
 
         if UserInterface.get_current_player() == PLAYER:
             # Get and process the Player's input
@@ -101,7 +105,12 @@ def main_loop():
             # if not, tell the UI to inform the user about it and ask again
             while player_input != MOVE_RESET and player_input != MOVE_UNDO and \
                     (player_input == MOVE_ILLEGAL or not LevelManager.process_move(player_input, PLAYER)):
+
+                if UserInterface.is_exiting():
+                    return
+
                 UserInterface.handle_illegal_move()
+
                 if ai_versus:
                     # AI can't make an illegal move
                     print "AI tried to make an illegal move"
@@ -123,16 +132,20 @@ def main_loop():
 
             while ai_move != MOVE_RESET and ai_move != MOVE_UNDO and \
                     (ai_move == MOVE_ILLEGAL or not LevelManager.process_move(ai_move, AI)):
+        
+                if UserInterface.is_exiting():
+                    return
+        
                 UserInterface.handle_illegal_move()
+        
                 if versus_ai:
                     # AI can't make an illegal move
-                    print "AI tried to make an illegal move"
+                    if DEBUG:
+                        print "AI tried to make an illegal move"
+                    
                     raise RuntimeError
                 else:
                     ai_move = UserInterface.get_input()
 
             handle_move(ai_move)
 
-        # Check if we have ended the program with the previous move, if yes, terminate the loop
-        if UserInterface.is_exiting():
-            return

@@ -1,10 +1,7 @@
-# coding=utf-8
 #####
-# TurboRuchacz 4000 XTREME - Kasparov Edition
-# Version: Alpha 1.5
-# A Connect Four game
-# Created by (alphabetically) Mateusz Gienieczko, Franciszek Hnatów, Jan Klinkosz, Piotr Lewandowski and Kamil Turko
-# Copyright 2016
+# TurboBot 4000 XTREME - Kasparov Edition
+# A Connect Four game with AI using minimax algorithm with alpha-beta pruning
+# Copyright (C) 2016 Mateusz Gienieczko, Franciszek Hnatow, Jan Klinkosz, Piotr Lewandowski and Kamil Turko
 #####
 import connectfour
 
