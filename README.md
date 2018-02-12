@@ -14,7 +14,7 @@ Usage:
 
 Controls:
 
-The player is red and always starts first. Choose the row to insert your token into with keys '1', '2', '3', '4', '5', '6', '7' on your keyboard.
+The player is red and always starts first. Choose the row into which you want to insert your token with keys '1', '2', '3', '4', '5', '6', '7' on your keyboard.
 
 The AI is blue and will think about its move for 10 seconds before performing it.
 
