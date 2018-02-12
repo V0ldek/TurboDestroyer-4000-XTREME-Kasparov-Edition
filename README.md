@@ -6,7 +6,7 @@ A Connect Four game with AI using minimax algorithm with alpha-beta pruning and 
 
 Copyright (C) 2016 Mateusz Gienieczko, Franciszek Hnatow, Jan Klinkosz, Piotr Lewandowski and Kamil Turko
 
-Run on:
+Usage:
 
 -- Windows: run bin/ConnectFour.exe executable
 
