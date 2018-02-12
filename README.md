@@ -1,7 +1,9 @@
 # ConnectFour
 
 Codename: TurboDestroyer 4000 XTREME - Kasparov Edition
-A Connect Four game with AI using minimax algorithm with alpha-beta pruning
+
+A Connect Four game with AI using minimax algorithm with alpha-beta pruning and iterative deepening
+
 Copyright (C) 2016 Mateusz Gienieczko, Franciszek Hnatow, Jan Klinkosz, Piotr Lewandowski and Kamil Turko
 
 Run on:
