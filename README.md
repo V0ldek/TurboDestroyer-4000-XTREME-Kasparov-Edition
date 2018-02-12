@@ -8,9 +8,9 @@ Copyright (C) 2016 Mateusz Gienieczko, Franciszek Hnatow, Jan Klinkosz, Piotr Le
 
 Usage:
 
--- Windows: run bin/ConnectFour.exe executable
+-- Windows: run `bin/ConnectFour.exe` executable
 
--- Linux: run main.py script
+-- Linux: run `main.py` script
 
 Controls:
 
@@ -26,12 +26,12 @@ The screen will flash briefly when you try to perform an illegal move.
 
 The game code consists of four modules:
 
--- UserInterface - handles GUI and displaying gamestate on screen
+-- `UserInterface` - handles GUI and displaying gamestate on screen
 
--- LevelManager - board representation and modification
+-- `LevelManager` - board representation and modification
 
--- AIManager - Artificial intelligence logic
+-- `AIManager` - Artificial intelligence logic
 
--- GameManager - main game loop, communication between other modules
+-- `GameManager` - main game loop, communication between other modules
 
-File setup.py creates an executable version for Windows using py2exe module.
+File `setup.py` creates an executable version for Windows using py2exe module.
