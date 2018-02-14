@@ -31,4 +31,4 @@ MOVE_UNDO = 'undo'
 INF = 1000000000
 
 # Time for one move (in milliseconds)
-TIME_TO_MOVE = 1000
+TIME_TO_MOVE = 10000
